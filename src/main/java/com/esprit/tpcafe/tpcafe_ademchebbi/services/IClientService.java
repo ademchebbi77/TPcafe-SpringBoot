@@ -1,14 +1,13 @@
 package com.esprit.tpcafe.tpcafe_ademchebbi.services;
 
-import com.esprit.tpcafe.tpcafe_ademchebbi.entities.Adresse;
-import com.esprit.tpcafe.tpcafe_ademchebbi.entities.Article;
-import com.esprit.tpcafe.tpcafe_ademchebbi.entities.Client;
-import com.esprit.tpcafe.tpcafe_ademchebbi.dto.ClientResponse;
-import com.esprit.tpcafe.tpcafe_ademchebbi.entities.Commande;
-
 import java.time.LocalDate;
-
 import java.util.List;
+
+import com.esprit.tpcafe.tpcafe_ademchebbi.dto.ClientResponse;
+import com.esprit.tpcafe.tpcafe_ademchebbi.entities.Article;
+import com.esprit.tpcafe.tpcafe_ademchebbi.entities.Commande;
+import com.esprit.tpcafe.tpcafe_ademchebbi.entities.Client;
+import com.esprit.tpcafe.tpcafe_ademchebbi.entities.Adresse;
 
 public interface IClientService {
 
@@ -40,18 +39,17 @@ public interface IClientService {
     List<ClientResponse> findNoDateNaissance();
     List<ClientResponse> findAdresseNotNull();
     List<ClientResponse> findByVilles(List<String> villes);
-
-    // Recherches par points de fidélité
     List<ClientResponse> findByPointsGreater(int pts);
     List<ClientResponse> findByPointsGreaterOrEqual(int pts);
     List<ClientResponse> findPointsBetween(int min, int max);
-
-    // Recherches liées aux commandes
     List<ClientResponse> orderedArticle(String article);
     List<ClientResponse> nameContainsAndOrderedType(String str, Article type);
 
+    // ✅ This is the one your class MUST implement
+    void ajouterCommandeEtAffecterAffecterAClient(Commande commande, String nom, String prenom);
 
-    void ajouterCommandeEtAffecterAffecterAClient(Commande c, String nomC, String promoC);
+    void affecterCommandeAClient(long idCommande, long idClient);
 
-
+    // (keep your other methods here, but ensure no duplicates)
+    void ajouterEtAffecterAdresseAClient(Adresse adresse, Client client);
 }
