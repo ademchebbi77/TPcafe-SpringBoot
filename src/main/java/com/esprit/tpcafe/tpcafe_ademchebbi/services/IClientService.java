@@ -53,7 +53,5 @@ public interface IClientService {
 
     void ajouterCommandeEtAffecterAffecterAClient(Commande c, String nomC, String promoC);
 
-    void ajouterEtAffecterAdresseAClient(Adresse adresse, Client client);
 
-    void ajouterEtAffecterAdresseAClient(Adresse adresse, Client client);
 }
